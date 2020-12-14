@@ -1,11 +1,16 @@
+"""This is where we bring all the modular components together."""
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from app import models, schemas, routes
+from app.database import session_local, engine
 
-from app import db, ml, viz
+# to create our models in the databse
+models.Base.metadata.create_all(bind=engine)
 
 description = """
-Edit your app's title and description. See [https://fastapi.tiangolo.com/tutorial/metadata/](https://fastapi.tiangolo.com/tutorial/metadata/)
+**Human Rights First Asylum**
 
 To use these interactive docs:
 - Click on an endpoint below
@@ -15,15 +20,13 @@ To use these interactive docs:
 - Scroll down to see the Server response Code & Details
 """
 
-app = FastAPI(
-    title='DS API',
-    description=description,
+application = app = FastAPI(
+    title = "Notes",
+    description = description,
     docs_url='/',
 )
 
-app.include_router(db.router, tags=['Database'])
-app.include_router(ml.router, tags=['Machine Learning'])
-app.include_router(viz.router, tags=['Visualization'])
+app.include_router(routes.router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -33,5 +36,6 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     uvicorn.run(app)
