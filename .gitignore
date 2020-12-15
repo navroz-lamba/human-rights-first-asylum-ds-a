@@ -1,7 +1,9 @@
 .DS_Store
 .vscode/
 temporary.db
-
+# AWS secrets
+./scripts/secrets.py
+.env
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
