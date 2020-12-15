@@ -15,6 +15,7 @@ rds_username = os.getenv('rds_username')
 rds_password = os.getenv('rds_password')
 rds_endpoint = 'asylumdb.cxip2v9lysxm.us-east-2.rds.amazonaws.com'
 port = '5432'
+database_name = 'postgres'
 
 class Engine:
     def __init__(self):
@@ -38,8 +39,8 @@ if __name__ == "__main__":
     base = Engine()
 
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
-RDS_DATABASE_URL = 'postgresql://{}:{}@{}:{}'.format(
-                            rds_username, rds_password, rds_endpoint, port)
+RDS_DATABASE_URL = 'postgresql://{}:{}@{}:{}/postgres'.format(
+                            rds_username, rds_password, rds_endpoint, port, database_name)
 
 # to connect to the database
 engine = create_engine(RDS_DATABASE_URL)
@@ -52,3 +53,4 @@ Base = declarative_base()
 # to check the connection 
 if __name__ == "__main__":
     print(engine)
+    print(Base)
