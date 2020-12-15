@@ -37,3 +37,18 @@ class Engine:
 if __name__ == "__main__":
     base = Engine()
 
+# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+RDS_DATABASE_URL = 'postgresql://{}:{}@{}:{}'.format(
+                            rds_username, rds_password, rds_endpoint, port)
+
+# to connect to the database
+engine = create_engine(RDS_DATABASE_URL)
+
+# To be able to talk to the db, make a session 
+session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)()
+
+Base = declarative_base()
+
+# to check the connection 
+if __name__ == "__main__":
+    print(engine)

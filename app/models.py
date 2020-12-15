@@ -10,6 +10,10 @@ from .database import Engine
 from fastapi import APIRouter
 from sqlalchemy.orm import relationship
 Base = Engine
+from .database import Base
+from fastapi import APIRouter
+from sqlalchemy.orm import relationship
+
 class Case(Base):
     __tablename__ = "case"
 
