@@ -8,6 +8,11 @@ from app import models, schemas, routes, database, upload_file
 
 # to create our models in the databse
 #models.Base.metadata.create_all(bind=engine)
+from app import models, schemas, routes
+from app.database import session_local, engine
+
+# to create our models in the databse
+models.Base.metadata.create_all(bind=engine)
 
 description = """
 **Human Rights First Asylum**
