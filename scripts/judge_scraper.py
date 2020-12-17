@@ -18,7 +18,7 @@ def text_scraper(pdf):
 df = pd.read_csv('judges_appointed.csv')
 
 
-text_scraper('upload_file.py')
+text_scraper('upload_file.pdf')
 
 
 from spacy.matcher import Matcher
@@ -60,5 +60,5 @@ for x in range(len(names_list)):
 
 
 
-print(names_list[judge])
+judge_name = names_list[judge]
         
