@@ -2,8 +2,11 @@ from pdfminer.high_level import extract_text
 import spacy
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
+from fastapi import FastAPI
 
+app = FastAPI()
 
+@app.get("/upload/pdf")
 def country_origin(pdf):
 
     countries = ['Afghanistan',
@@ -237,7 +240,7 @@ def country_origin(pdf):
     'Zambia',
     'Zimbabwe']
 
-    text = extract_text(pdf)
+    text = extract_text('upload_file.py')
 
 
     class EntityMatcher(object):
@@ -272,3 +275,5 @@ def country_origin(pdf):
     #add this to the database, string of the country of origin.
     country_of_origin = home_country[0][0]
     return country_of_origin
+
+country_origin('upload_file.py')

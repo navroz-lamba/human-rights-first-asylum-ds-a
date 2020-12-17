@@ -1,6 +1,12 @@
 import re
+from fastapi import FastAPI
+
+app = FastAPI()
 
 
+
+
+@app.get("/upload/pdf")
 def date_conversion(pdf):
     date = str(pdf)
 
@@ -9,3 +15,5 @@ def date_conversion(pdf):
     dates = re.search(pattern, date)
     date_converted = (dates.group())
     return date_converted
+
+date_conversion('upload_file.py')
