@@ -15,7 +15,7 @@ sqlalchemy = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 boto3 = "*"
-
+python-multipart = "*"
 
 [requires]
 python_version = "3"
