@@ -53,12 +53,14 @@ for _, start, end in matches:
 
 for x in range(len(names_list)):
     if df['name'].str.contains(names_list[x]).any():
-        global judge
         judge = x
+        break
     else:
         "Judge not found."
 
 
 
 judge_name = names_list[judge]
-        
+df1 = df[df['name'].str.contains(judge_name)]
+
+judge_name_final = df1['name'].iloc[0]
