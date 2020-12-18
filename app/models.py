@@ -4,7 +4,9 @@ and the file schemas.py with the Pydantic models"""
 
 """This file creates the model or schema for the table Records in our database.
 """
+
 import os
+
 from fastapi import APIRouter
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base

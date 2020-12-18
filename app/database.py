@@ -1,6 +1,10 @@
 """This defines our database connection using SQLAlchemy."""
 import os
+
 from fastapi import APIRouter, Depends
+
+import sqlalchemy
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker 
@@ -8,6 +12,7 @@ from dotenv import load_dotenv
 import psycopg2
 import boto3
 import sqlalchemy
+
 
 # to pull the credentials from .env
 load_dotenv()
