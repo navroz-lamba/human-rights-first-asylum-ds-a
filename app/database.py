@@ -9,41 +9,35 @@ import psycopg2
 import boto3
 import pandas
 import sqlalchemy
-import fastapi-sqlalchemy
 routerdb = APIRouter()
+load_dotenv()
+POLICE_TABLE = """CREATE TABLE IF NOT EXISTS police_force (
+    id SERIAL PRIMARY KEY NOT NULL,
+    dates TIMESTAMP,
+    added_on TIMESTAMP,
+    links TEXT,
+    case_id TEXT,
+    city TEXT,
+    state TEXT,
+    lat FLOAT,
+    long FLOAT,
+    title TEXT,
+    description TEXT,
+    tags TEXT,
+    verbalization INT,
+    empty_hand_soft INT,
+    empty_hand_hard INT,
+    less_lethal_methods INT,
+    lethal_force INT,
+    uncategorized INT
+);"""
+#Connection to DB
+name = os.getenv('name')
+name = os.getenv('rds_username')
+name = os.getenv('rds_password')
+pg_conn = psycopg2.connect(dbname=name, user=rds_username, password=rds_password,host=rds_endpoint, port=port)
+pg_curs = pg_conn.cursor()
 #SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-async def get_db() -> sqlalchemy.engine.base.Connection:
-    """Get a SQLAlchemy database connection.
-    
-    Uses this environment variable if it exists:  
-    DATABASE_URL=dialect://user:password@host/dbname
-    Otherwise uses a SQLite database for initial local development.
-    """
-    load_dotenv()
-    rds_username = str(os.getenv('rds_username'))
-    rds_password = str(os.getenv('rds_password'))
-    rds_endpoint = str(os.getenv('rds_endpoint'))
-    port = '5432'
-    database_name = 'postgres'
-    #SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
-    SQLALCHEMY_DATABASE_URL = 'postgresql://{}:{}@{}:{}/{}'.format(rds_username, rds_password, rds_endpoint, port, database_name)
-    engine = sqlalchemy.create_engine(SQLALCHEMY_DATABASE_URL)
-    connection = engine.connect()
-    try:
-        yield connection
-    finally:
-        connection.close()
-
-
-@routerdb.get('/info')
-async def get_url(connection=Depends(get_db)):
-    """Verify we can connect to the database, 
-    and return the database URL in this format:
-    dialect://user:password@host/dbname
-    The password will be hidden with ***
-    """
-    url_without_password = repr(connection.engine.url)
-    return {'database_url': url_without_password}
 #Base = declarative_base()
 # For S3 buckets database 
 # access_key = os.getenv('access_key')
