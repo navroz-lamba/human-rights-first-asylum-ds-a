@@ -6,14 +6,9 @@ and the file schemas.py with the Pydantic models"""
 """
 
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from .database import Engine
 from fastapi import APIRouter
 from sqlalchemy.orm import relationship
-Base = Engine
 from .database import Base
-from fastapi import APIRouter
-from sqlalchemy.orm import relationship
-
 
 class Judge(Base):
     __tablename__ = 'judge'
