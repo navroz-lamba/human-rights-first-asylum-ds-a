@@ -2,7 +2,7 @@
 .vscode/
 temporary.db
 # AWS secrets
-./scripts/secrets.py
+.elasticbeanstalk
 .env
 # Byte-compiled / optimized / DLL files
 __pycache__/
