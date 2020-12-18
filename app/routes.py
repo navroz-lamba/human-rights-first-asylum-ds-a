@@ -7,7 +7,7 @@ from sqlalchemy import *
 #from .database import Base, MetaData, engine
 from .models import Judge, Case
 router = APIRouter()
-# database Get request
+from app.database import Base
 
 @router.get("/case")
 async def update_case():

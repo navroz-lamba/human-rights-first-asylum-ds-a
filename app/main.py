@@ -3,13 +3,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-#from app.database import engine
-
-# to create our models in the databse
-#models.Base.metadata.create_all(bind=engine)
+from app.database import engine
 from . import models, schemas, routes, database
 
 # to create our models in the databse
+models.Base.metadata.create_all(bind=engine)
 
 description = """
 **Human Rights First Asylum**
@@ -29,7 +27,7 @@ app = FastAPI(
 )
 
 app.include_router(routes.router)
-app.include_router(database.routerdb)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=['*'],

@@ -2,7 +2,7 @@
 we will have the file models.py with the SQLAlchemy models, 
 and the file schemas.py with the Pydantic models"""
 
-"""This file creates the model or schema for the table Recordsin our database.
+"""This file creates the model or schema for the table Records in our database.
 """
 import os
 from fastapi import APIRouter
@@ -11,13 +11,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker 
 from sqlalchemy import *
 from dotenv import load_dotenv
-import psycopg2
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from fastapi import APIRouter
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
+from app.database import Base
 
-Base = declarative_base()
+
 class Judge(Base):
     __tablename__ = 'judge'
 
