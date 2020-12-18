@@ -1,25 +1,19 @@
 """This file has all the end points"""
 
 from fastapi import APIRouter, File, UploadFile
-from app.database import session_local, engine
-from app.models import Case, User, Judge
-
+from app.models import Case, User, Judge, Base
+from app import models
+from sqlalchemy import *
+#from .database import Base, MetaData, engine
+from .models import Judge, Case
 router = APIRouter()
-
 # database Get request
-@router.get("/info")
-async def update_data():
-        return print("database works")
-async def get_url():
-    with engine.connect() as con:
-        url_without_password = con.engine.url.__repr__()
-        return {'url': url_without_password} 
 
 @router.get("/case")
 async def update_case():
         return print("database works")
 async def get_case():
-    with engine.connect() as con:
+    with Base.connect() as con:
         case_without_password = con.engine.case.__repr__()
         return {'case': case_without_password} 
 
@@ -27,7 +21,7 @@ async def get_case():
 async def update_judge():
         return print("database works")
 async def get_judge():
-    with engine.connect() as con:
+    with Base.connect() as con:
         judge_without_password = con.engine.judge.__repr__()
         return {'judge': judge_without_password} 
 

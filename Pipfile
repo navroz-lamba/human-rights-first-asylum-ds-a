@@ -17,7 +17,7 @@ python-dotenv = "*"
 boto3 = "*"
 python-multipart = "*"
 pandas = "*"
-
+fastapi-sqlalchemy = "*"
 
 [requires]
 python_version = "3"

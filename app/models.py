@@ -4,12 +4,20 @@ and the file schemas.py with the Pydantic models"""
 
 """This file creates the model or schema for the table Recordsin our database.
 """
-
+import os
+from fastapi import APIRouter
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker 
+from sqlalchemy import *
+from dotenv import load_dotenv
+import psycopg2
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from fastapi import APIRouter
 from sqlalchemy.orm import relationship
-from .database import Base
+from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
 class Judge(Base):
     __tablename__ = 'judge'
 
@@ -22,7 +30,7 @@ class Judge(Base):
     biography = Column(String)
     # judge can have multiple cases 
     # on using backref it establishes .judge attribute on Case
-    cases = relationship("Case", backref='judge') # Case.judge 
+    cases = relationship("case", backref='judge') # Case.judge 
 
 
 class Case(Base):
@@ -62,7 +70,7 @@ class BookMarkJudge(Base):
     # using foreign key 
     user_id = Column(Integer, ForeignKey(User.id))
     # There could be multiple judges bookmarked
-    judges = relationship("Judge", backref='book_mark_judge') # Judge.book_mark_judge
+    judges = relationship("judge", backref='book_mark_judge') # Judge.book_mark_judge
 
 
 class BookMarkCase(Base):
@@ -72,4 +80,6 @@ class BookMarkCase(Base):
     # using foreign key 
     user_id = Column(Integer, ForeignKey(User.id))
     # There could be multiple cases bookmarked
-    cases = relationship("Case", backref='book_mark_case') # Case.book_mark_case
+    cases = relationship("case", backref='book_mark_case') # Case.book_mark_case
+
+
