@@ -20,5 +20,9 @@ pandas = "*"
 pdfminer = "*"
 
 
+pandas = "*"
+fastapi-sqlalchemy = "*"
+
+
 [requires]
 python_version = "3"

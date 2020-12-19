@@ -11,8 +11,8 @@ import boto3
 # s3 bucket creation
 import boto3
 
-s3 = boto3.client('s3')
-s3.create_bucket(Bucket='hrf-asylum-dsa-documents')
+# s3 = boto3.client('s3')
+# s3.create_bucket(Bucket='hrf-asylum-dsa-documents')
 
 # # to load the credentials from .env file
 # load_dotenv()
