@@ -6,7 +6,7 @@ import urllib.request
 import logging
 import boto3
 from botocore.exceptions import ClientError
-import response
+
 
 # Connect POST request ot the api routor
 router = APIRouter()
@@ -34,23 +34,23 @@ def upload_file(file_name, bucket, object_name=None):
 # parse case_url and scrape relivent data off of it
 def case_urls(str):
     # case url data for web to no name of document on S3 buckets to view
-    case_url = url
-    index = url[-19:-4].find('-')
-    hearing_date = url[(len(url)-19):-4]
+    case_url = str
+    index = str[-19:-4].find('-')
+    hearing_date = str[(len(str)-19):-4]
     hearing_date = hearing_date[index+1:]
     decision_date = hearing_date
-    index = url.find('-')
-    indexend = url.find(hearing_date)
-    a = url[indexend-8:indexend-1].find('-') +1
-    url[indexend-8+a:indexend-1]
-    department=url[indexend-8+a:indexend-1]
-    b = url.find(department)
-    c=url[:b].find('-')+1
-    urlforloop = url[c:indexend-9+a]
+    index = str.find('-')
+    indexend = str.find(hearing_date)
+    a = str[indexend-8:indexend-1].find('-') +1
+    str[indexend-8+a:indexend-1]
+    department=str[indexend-8+a:indexend-1]
+    b = str.find(department)
+    c=str[:b].find('-')+1
+    urlforloop = str[c:indexend-9+a]
     l = []
     for i in range(7,len(urlforloop)):
-        if url[i:i+1].find('-') == -1 and url[i+2:i+3].isnumeric():
-        l.append(i)
+        if str[i:i+1].find('-') == -1 and str[i+2:i+3].isnumeric():
+            l.append(i)
     h= min(l) - 10
     case_id = urlforloop[h:]
     t = urlforloop.find(case_id)
@@ -60,12 +60,11 @@ def case_urls(str):
 @router.post("/upload/pdf")
 async def pdf(file: UploadFile = File(...)):
     if len(file.filename) >= 1:
-        
         # add these varibles to table's scrapes all the data we need from initional upload
         case_id, case_url,hearing_date,decision_date,department,refugee = case_urls(file.filename)
         
         # Uploads File
-        upload = upload_file(file, bucket='hrf-asylum-dsa-documents', object_name=case_url)
+        #upload = upload_file(file, bucket='hrf-asylum-dsa-documents', object_name=case_url)
     return {"filename": file.filename,
             "case_id" : case_id,
             "case_url" : case_url,
@@ -73,7 +72,7 @@ async def pdf(file: UploadFile = File(...)):
             "decision_date" : decision_date,
             "department": department,
             "refugee": refugee,
-            "Test": upload}
+            "Test": "test_results"}
 
 # deals with data from csv
 def csv_data(df):
@@ -81,7 +80,7 @@ def csv_data(df):
 
 @router.post("/upload/file")
 async def not_pdf(file: UploadFile = File(...)):
-    if len(file.filename) >= 1:
+            #if len(file.filename) >= 1:
     # add these varibles to table's
     #df = pd.read_csv(file)
     #varibles = csv_data(df)

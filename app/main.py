@@ -4,14 +4,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from app.database import engine
-from . import models, schemas, routes, database
+from . import models, schemas, routes, database, upload_file
 
 # to create our models in the databse
-models.Base.metadata.create_all(bind=engine)
+#models.Base.metadata.create_all(bind=engine)
 
 description = """
 **Human Rights First Asylum**
-
 To use these interactive docs:
 - Click on an endpoint below
 - Click the **Try it out** button
@@ -27,6 +26,7 @@ app = FastAPI(
 )
 
 app.include_router(routes.router)
+app.include_router(upload_file.router)
 
 app.add_middleware(
     CORSMiddleware,

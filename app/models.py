@@ -11,7 +11,7 @@ from fastapi import APIRouter
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker 
-from sqlalchemy import *
+#from sqlalchemy import *
 from dotenv import load_dotenv
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship

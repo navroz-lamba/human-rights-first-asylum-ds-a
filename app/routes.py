@@ -36,11 +36,3 @@ async def get_judge():
         judge_without_password = con.engine.judge.__repr__()
         return {'judge': judge_without_password} 
 
-# file uploaders database post request
-@router.post("/upload/pdf")
-async def pdf(file: UploadFile = File(...)):
-    return {"filename": file.filename}
-
-@router.post("/upload/file")
-async def not_pdf(file: UploadFile = File(...)):
-    return {"filename": file.filename}
