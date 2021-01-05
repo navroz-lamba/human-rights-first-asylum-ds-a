@@ -6,7 +6,6 @@ and the file schemas.py with the Pydantic models"""
 """
 
 import os
-
 from fastapi import APIRouter
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -15,7 +14,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from app.database import Base
+from .upload_file import Base
 
 
 class Judge(Base):

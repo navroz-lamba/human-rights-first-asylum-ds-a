@@ -1,12 +1,10 @@
 """This file has all the end points"""
 
 from fastapi import APIRouter, File, UploadFile
-from app.models import Case, User, Judge, Base
+from .models import Case, User, Judge, Base
 from app import models
-from sqlalchemy import *
-from .database import Base, engine
-from .models import Judge, Case
-
+#from .upload_file import Base, engine
+engine = ""
 router = APIRouter()
 
 

@@ -1,13 +1,8 @@
 {
     "_meta": {
         "hash": {
-<<<<<<< HEAD
             "sha256": "7ad963d358be32795691868a35bdf6e6cf48a1e48785dc749a898a09d961f5d3"
-=======
 
-            "sha256": "d868e45f7a40a3abf687889fa7c7bdd7d788321cd96b428f88872fbbe338ab71"
-
->>>>>>> 07e006723c279d22b8e70d2bac84c2f2212de504
         },
         "pipfile-spec": 6,
         "requires": {
@@ -163,7 +158,6 @@
             "index": "pypi",
             "version": "==1.1.5"
         },
-<<<<<<< HEAD
         "pdfminer": {
             "hashes": [
                 "sha256:9e700bc731300ed5c8936343c1dd4529638184198e54e91dd2b59b64a755dc01"
@@ -171,8 +165,6 @@
             "index": "pypi",
             "version": "==20191125"
         },
-=======
->>>>>>> 07e006723c279d22b8e70d2bac84c2f2212de504
         "psycopg2-binary": {
             "hashes": [
                 "sha256:0deac2af1a587ae12836aa07970f5cb91964f05a7c6cdb69d8425ff4c15d4e2c",

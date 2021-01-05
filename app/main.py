@@ -3,11 +3,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from app.database import engine
+from .database import engine
+import sqlalchemy
 from . import models, schemas, routes, database, upload_file
 
 # to create our models in the databse
-#models.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
 description = """
 **Human Rights First Asylum**
