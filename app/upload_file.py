@@ -128,7 +128,8 @@ def csv_data(df):
     return ""
 
 
-@router.post("/upload/file")
+# This route is not working yet, so don't include it
+# @router.post("/upload/file")
 async def not_pdf(file: UploadFile = File(...)):
             #if len(file.filename) >= 1:
     # add these varibles to table's
@@ -136,7 +137,9 @@ async def not_pdf(file: UploadFile = File(...)):
     #varibles = csv_data(df)
     return {"filename": file.filename}
 
-@router.post("/connect/db")
+
+# This route is not working yet, so don't include it
+# @router.post("/connect/db")
 async def get_db() -> sqlalchemy.engine.base.Connection:
     """Get a SQLAlchemy database connection.
     grab this from group b due to are database not working and nobody connect the scipts and tables together

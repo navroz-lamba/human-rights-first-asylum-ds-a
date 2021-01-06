@@ -26,7 +26,9 @@ app = FastAPI(
     docs_url='/',
 )
 
-app.include_router(routes.router)
+# These routes aren't working yet, so don't include them
+# app.include_router(routes.router)
+
 app.include_router(upload_file.router)
 
 app.add_middleware(
