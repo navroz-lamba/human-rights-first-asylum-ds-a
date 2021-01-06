@@ -11,7 +11,7 @@ pytest = "*"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 sqlalchemy = "*"
-dotenv = "*"
+python-dotenv = "*"
 boto3 = "*"
 python-multipart = "*"
 aiofile = "*"
