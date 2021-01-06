@@ -4,7 +4,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-
+#the input file must have the date as Month-Day-Year in the file name
 
 @app.get("/upload/pdf")
 def date_conversion(pdf):
@@ -14,6 +14,7 @@ def date_conversion(pdf):
 
     dates = re.search(pattern, date)
     date_converted = (dates.group())
+    print(date_converted)
     return date_converted
 
-date_conversion('upload_file.pdf')
+date_conversion(file.filename)

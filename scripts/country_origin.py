@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/upload/pdf")
 def country_origin(pdf):
-
+#countries minus United States
     countries = ['Afghanistan',
     'Albania',
     'Algeria',
@@ -240,33 +240,13 @@ def country_origin(pdf):
     'Zambia',
     'Zimbabwe']
 
-    text = extract_text('upload_file.py')
 
 
-    class EntityMatcher(object):
-        name = "entity_matcher"
+    text = extract_text(pdf)
 
-        def __init__(self, nlp, terms, label):
-            patterns = [nlp.make_doc(text) for text in terms]
-            self.matcher = PhraseMatcher(nlp.vocab)
-            self.matcher.add(label, None, *patterns)
-
-        def __call__(self, doc):
-            matches = self.matcher(doc)
-            for match_id, start, end in matches:
-                span = Span(doc, start, end, label=match_id)
-                doc.ents = list(doc.ents) + [span]
-            return doc
-
+    #entity matcher finds places and people
     nlp = spacy.load("en_core_web_sm")
-    terms = ("judge", "defendant", "credibility")
-    entity_matcher = EntityMatcher(nlp, terms, "PERSON")
-
-    nlp.add_pipe(entity_matcher, after="ner")
-
-    print(nlp.pipe_names)  # The components in the pipeline
-
-
+    #checking for a country mentioned that is not the united states
 
     doc = nlp(text)
     home_country = ([(ent.text, ent.label_) for ent in doc.ents if ent.label_ == 'GPE' 
@@ -274,6 +254,7 @@ def country_origin(pdf):
 
     #add this to the database, string of the country of origin.
     country_of_origin = home_country[0][0]
+    print(country_of_origin)
     return country_of_origin
 
-country_origin('upload_file.pdf')
+country_origin(file.filename)
