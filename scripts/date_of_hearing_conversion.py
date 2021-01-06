@@ -6,7 +6,7 @@ app = FastAPI()
 
 #the input file must have the date as Month-Day-Year in the file name
 
-@app.get("/upload/pdf")
+#@app.get("/upload/pdf")
 def date_conversion(pdf):
     date = str(pdf)
 
@@ -16,5 +16,3 @@ def date_conversion(pdf):
     date_converted = (dates.group())
     print(date_converted)
     return date_converted
-
-date_conversion(file.filename)

@@ -1,35 +1,29 @@
 import pandas as pd
 import dotenv
-from pdfminer.high_level import extract_text
 import os
 from pathlib import Path
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 from spacy.matcher import Matcher
 from pdfminer.high_level import extract_text
 import spacy
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span 
+#app = FastAPI()
+#router = APIRouter()
+#@app.get("/upload/pdf")
+# def text_scraper(pdf):
+#     global text
+#     text = extract_text(pdf)
 
-
-app = FastAPI()
-
-@app.get("/upload/pdf")
-def text_scraper(pdf):
+#     return text
+#@app.get("/upload/pdf")
+def text_scraper(path):
     global text
-    text = extract_text(pdf)
-
+    text = extract_text(path)
     return text
-
-df = pd.read_csv('judges_appointed.csv')
-
-# filename = file.filename
-# path = 'app/'+file.filename
-
-text_scraper('163798690-Artemio-Guzman-Rodriguez-A200-234-211-BIA-Aug-23-2013.pdf')
-
-@app.get("/upload/pdf")
 def matcher(text):
+    df = pd.read_csv('judges_appointed.csv')
     # initialize the matcher
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
@@ -74,6 +68,6 @@ def matcher(text):
     df1 = df[df['name'].str.contains(judge_name)]
 
     judge_name_final = df1['name'].iloc[0]
-    print(judge_name_final)
+    return judge_name_final
 
-matcher(text)
+#matcher()

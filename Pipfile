@@ -18,6 +18,8 @@ aiofile = "*"
 pdfminer = {six = "*"}
 pandas = "*"
 psycopg2-binary = "*"
+spacy = "*"
+"pdfminer.six" = "*"
 
 [requires]
 python_version = "3"

@@ -20,7 +20,9 @@ import os
 import aiofile
 from starlette.responses import FileResponse
 from fnmatch import fnmatch
-
+from scripts.judge_scraper import matcher, text_scraper
+from scripts.date_of_hearing_conversion import date_conversion
+from scripts.country_origin import country_origin
 # loads secret credentials 
 load_dotenv()
 # Connect POST request ot the api routor
@@ -46,41 +48,13 @@ def case_urls(str):
     for i in range(7,len(urlforloop)):
         if str[i:i+1].find('-') == -1 and str[i+2:i+3].isnumeric():
             l.append(i)
-    h= min(l) - 10
+        else:
+            l.append(0)
+    h = min(l) - 10
     case_id = urlforloop[h:]
     t = urlforloop.find(case_id)
     refugee = urlforloop[:t+1]
     return case_id, case_url,hearing_date,decision_date,department,refugee
-
-
-def save_upload_file(upload_file: UploadFile, destination: Path) -> None:
-    try:
-        with destination.open("wb") as buffer:
-            shutil.copyfileobj(upload_file.file, buffer)
-    finally:
-        upload_file.file.close()
-
-
-def save_upload_file_tmp(upload_file: UploadFile) -> Path:
-    try:
-        suffix = Path(upload_file.filename).suffix
-        with NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
-            shutil.copyfileobj(upload_file.file, tmp)
-            tmp_path = Path(tmp.name)
-    finally:
-        upload_file.file.close()
-    return tmp_path
-
-
-def handle_upload_file(
-    upload_file: UploadFile, handler: Callable[[Path], None]
-) -> None:
-    tmp_path = save_upload_file_tmp(upload_file)
-    try:
-        handler(tmp_path)  # Do something with the saved temp file
-    finally:
-        tmp_path.unlink()  # Delete the temp file
-
 
 # file uploaders
 @router.post("/upload/pdf")
@@ -107,8 +81,13 @@ async def pdf(file: UploadFile = File(...)):
         data = open(path, 'rb')
         s3.Bucket('hrf-asylum-dsa-documents').put_object(Key='pdf/'+file.filename, Body=data)
         # scipts to scrape pdf into free text amd get judge name
-        
-        
+        # scripts for judge name
+        text = text_scraper(path)
+        judge_name = matcher(text)
+        # county of origin
+        country_origin = country_origin()
+        # date
+        date_converted = date_conversion()
         # scipt to delete pdf after being scraped
         for dirpath, dirnames, filenames in os.walk(os.curdir):
             for file in filenames:
@@ -118,9 +97,11 @@ async def pdf(file: UploadFile = File(...)):
             "case_id" : case_id,
             "case_url" : case_url,
             "hearing_date" : hearing_date,
-            "decision_date" : decision_date,
+            "date_converted" : date_converted,
             "department": department,
             "refugee": refugee,
+            "country_origin": country_origin,
+            "judge_name": judge_name,
             "s3": "Viewable"}
 
 # deals with data from csv
@@ -136,29 +117,3 @@ async def not_pdf(file: UploadFile = File(...)):
     #df = pd.read_csv(file)
     #varibles = csv_data(df)
     return {"filename": file.filename}
-
-
-# This route is not working yet, so don't include it
-# @router.post("/connect/db")
-async def get_db() -> sqlalchemy.engine.base.Connection:
-    """Get a SQLAlchemy database connection.
-    grab this from group b due to are database not working and nobody connect the scipts and tables together
-    Uses this environment variable if it exists:  
-    DATABASE_URL=dialect://user:password@host/dbname
-    Otherwise uses a SQLite database for initial local development.
-    """
-    database_url = os.getenv('DATABASE_URL')
-    engine = sqlalchemy.create_engine(database_url)
-    connection = engine.connect()
-    session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)()
-    try:
-        yield connection
-    finally:
-        connection.close()
-# the postgres database has never work yet
-# load_dotenv()
-# database_url = os.getenv('DATABASE_URL')
-# engine = sqlalchemy.create_engine(database_url, pool_pre_ping=True)
-# connection = engine.connect()
-# session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)()
-Base = declarative_base()

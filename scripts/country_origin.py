@@ -4,9 +4,9 @@ from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 from fastapi import FastAPI
 
-app = FastAPI()
+#app = FastAPI()
 
-@app.get("/upload/pdf")
+#@app.get("/upload/pdf")
 def country_origin(pdf):
 #countries minus United States
     countries = ['Afghanistan',
@@ -241,7 +241,6 @@ def country_origin(pdf):
     'Zimbabwe']
 
 
-
     text = extract_text(pdf)
 
     #entity matcher finds places and people
@@ -254,7 +253,6 @@ def country_origin(pdf):
 
     #add this to the database, string of the country of origin.
     country_of_origin = home_country[0][0]
-    print(country_of_origin)
     return country_of_origin
 
-country_origin(file.filename)
+#country_origin(file.filename)

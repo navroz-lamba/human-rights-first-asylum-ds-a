@@ -12,7 +12,6 @@ from sqlalchemy import *
 import boto3
 
 
-
 #to pull the credentials from .env
 load_dotenv()
 
@@ -21,10 +20,10 @@ rds_username = os.getenv('rds_username')
 rds_password = os.getenv('rds_password')
 rds_endpoint = 'hrfasylum-database-a.catpmmwmrkhp.us-east-1.rds.amazonaws.com'
 port = '5432'
-database_name = 'hrfasyluma'
+database_name = 'postgres'
 
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
-RDS_DATABASE_URL = 'postgresql+psycopg2://{}:{}@{}:{}/{}'.format(rds_username, rds_password, rds_endpoint, port, database_name)
+RDS_DATABASE_URL = 'postgres://{}:{}@{}:{}/{}'.format(rds_username, rds_password, rds_endpoint, port, database_name)
 
 # to connect to the database
 engine = create_engine(RDS_DATABASE_URL)

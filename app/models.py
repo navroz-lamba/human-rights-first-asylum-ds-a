@@ -14,7 +14,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from .upload_file import Base
+from .database import Base
 
 
 class Judge(Base):
