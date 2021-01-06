@@ -6,20 +6,18 @@ verify_ssl = true
 [dev-packages]
 jupyter = "*"
 pytest = "*"
-pylint = "*"
 
 [packages]
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 sqlalchemy = "*"
-psycopg2-binary = "*"
 python-dotenv = "*"
 boto3 = "*"
 python-multipart = "*"
-
+aiofile = "*"
+pdfminer = {six = "*"}
 pandas = "*"
-fastapi-sqlalchemy = "*"
-
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3"

@@ -1,12 +1,10 @@
 """This file has all the end points"""
 
 from fastapi import APIRouter, File, UploadFile
-from app.models import Case, User, Judge, Base
+from .models import Case, User, Judge, Base
 from app import models
-from sqlalchemy import *
-from .database import Base, engine
-from .models import Judge, Case
-
+#from .upload_file import Base, engine
+engine = ""
 router = APIRouter()
 
 
@@ -36,11 +34,3 @@ async def get_judge():
         judge_without_password = con.engine.judge.__repr__()
         return {'judge': judge_without_password} 
 
-# file uploaders database post request
-@router.post("/upload/pdf")
-async def pdf(file: UploadFile = File(...)):
-    return {"filename": file.filename}
-
-@router.post("/upload/file")
-async def not_pdf(file: UploadFile = File(...)):
-    return {"filename": file.filename}
