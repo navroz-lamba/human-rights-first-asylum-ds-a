@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8-blueviolet)
 ![Framework](https://img.shields.io/badge/Framework-FastAPI-red)
 ![Webdriver](https://img.shields.io/badge/Webdriver-Selenium-green)
-![NLP-Library](https://img.shields.io/badge/Spacy-cyan)
+![NLP-Library](https://img.shields.io/badge/NLP_Library-Spacy-cyan)
 ![Database](https://img.shields.io/badge/Database-AWS_S3-peach)
 ![Database](https://img.shields.io/badge/Database-AWS_RDS_PostgreSQL-yellow)
 ![Paas](https://img.shields.io/badge/Paas-AWS_Elastic_Beanstalk-orange)
