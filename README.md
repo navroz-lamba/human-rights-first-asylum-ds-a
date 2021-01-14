@@ -36,11 +36,15 @@ Documents being the searchable PDFs it made it easy to use one of the third-part
 
 After extracting the plain text, I had an option to use one of the two well known Natural Language Processing libraries; NLTK and Spacy. Spacy is a newer library that is more accurate and a lot faster I went with Spacy. Using Spacy’s named entity recognition I was able to extract the names from the document.
 
+![123](https://user-images.githubusercontent.com/67918990/104557048-938db280-560e-11eb-9499-858a8439fb53.png)
+
 The challenge that I faced extracting the names was that the names in the PDF were in the format of Last name, First name. Spacy was outputting one full name as two separate names. I came across a Class, Matcher in Spacy where we are able to match sequences of tokens, based on custom pattern rules. Using matcher along with named entities Class I was able to extract the full names.
 
 ### Built REST API using FAST API
 
 I also took the charge of making a REST API to feed data to our front-end team. I used FastAPI as it’s a relatively new web framework for Python claiming to be one of the fastest Python frameworks available.
+
+![124](https://user-images.githubusercontent.com/67918990/104557055-95f00c80-560e-11eb-9858-63e3c4025f29.png)
 
 Inside the app folder, I had made separate files that were performing individual tasks rather than throwing everything in the main file. This made things more organized and it’s easier to debug. The database connection using SQLAlchemy was handled in the database.py file, and the SQLAlechmy models were all put in the models.py file. The endpoints were all put in the routes file, and the main.py file was where all the modular components were put together.
 
