@@ -1,6 +1,12 @@
 # Labs DS template
 [Docs](https://docs.labs.lambdaschool.com/data-science/)
 
+![Python](https://img.shields.io/badge/Python-3.8-blueviolet)
+![Framework](https://img.shields.io/badge/Framework-Fast API-red)
+![Frontend](https://img.shields.io/badge/Frontend-HTML/CSS/JS-green)
+![API](https://img.shields.io/badge/API-TMDB-fcba03)
+![Paas](https://img.shields.io/badge/Paas-AWS Elastic Beanstalk-orange)
+
 Human Rights First is an independent advocacy and action organization that challenges America to live up to its ideals. They believe American leadership is essential in the global struggle for human rights, so they press the U.S. government and private companies to respect human rights and the rule of law. When they fail, they step in to demand reform, accountability, and justice. Around the world, they work where they can best harness American influence to secure core freedoms.
 
 HRF needs a web tool backed by data science to aggregate data on asylum cases, allow users to explore that data, and predict and visualize how a judge might rule on a specific asylum case as well as what specific elements of an asylum case seem to most impact a favorable or unfavorable ruling.
