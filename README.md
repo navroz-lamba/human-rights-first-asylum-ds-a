@@ -8,7 +8,7 @@
 ![Database](https://img.shields.io/badge/Database-AWS_RDS_PostgreSQL-yellow)
 ![Paas](https://img.shields.io/badge/Paas-AWS_Elastic_Beanstalk-orange)
 
-I was part of a cross functional team consisting of 3 Data Scientists, 2 Front-end and 1 Back-end developer. We were assigned a greenfield project from a non-profit organization, Human Rights First.
+I was part of a cross functional team consisting of 3 Data Scientists, 2 Front-end and 1 Back-end developer. We collaborated remotely to work on a greenfield project from a non-profit organization, Human Rights First.
 
 ## About the Non-profit Organization and its Asylum Representation Program
 
