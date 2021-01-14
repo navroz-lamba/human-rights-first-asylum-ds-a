@@ -3,10 +3,10 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8-blueviolet)
 ![Framework](https://img.shields.io/badge/Framework-FastAPI-red)
-![Webdriver](https://img.shields.io/badge/Frontend-Selenium-green)
+![Webdriver](https://img.shields.io/badge/Webdriver-Selenium-green)
 ![NLP-Library](https://img.shields.io/badge/Spacy-cyan)
-![Database](https://img.shields.io/badge/AWS-S3-peach)
-![Database](https://img.shields.io/badge/AWS-RDS-PostgreSQL-yellow)
+![Database](https://img.shields.io/badge/Database-AWS_S3-peach)
+![Database](https://img.shields.io/badge/Database-AWS_RDS_PostgreSQL-yellow)
 ![Paas](https://img.shields.io/badge/Paas-AWS-Elastic-Beanstalk-orange)
 
 Human Rights First is an independent advocacy and action organization that challenges America to live up to its ideals. They believe American leadership is essential in the global struggle for human rights, so they press the U.S. government and private companies to respect human rights and the rule of law. When they fail, they step in to demand reform, accountability, and justice. Around the world, they work where they can best harness American influence to secure core freedoms.
