@@ -8,7 +8,34 @@
 ![Database](https://img.shields.io/badge/Database-AWS_RDS_PostgreSQL-yellow)
 ![Paas](https://img.shields.io/badge/Paas-AWS_Elastic_Beanstalk-orange)
 
-I was part of a cross functional team consisting of 3 Data Scientists, 2 Front-end and 1 Back-end developer. We collaborated remotely to work on a greenfield project from a non-profit organization, Human Rights First.
+Designed a web tool backed up by Data Science to aggregate data on asylum cases, allowing users to explore data, make predictions, and visualize how a judge might rule on a specific case as well as what specific elements of an asylum case seem to most impact a favorable or unfavorable ruling. 
+
+## Quick Overview of the project 
+
+•	Collaborated remotely with a cross-functional team consisting of 3 Data Scientists, 2 Frontend Web Developers, and 1 Backend Web Developer to build an application for a non-profit organization (Asylum - Human Rights First).
+
+•	Built a technical architecture for a machine learning solution around the need and requirements of the client to enable proper prioritization of work, seamless systems and data integration. 
+
+•	Web Crawler was built using Selenium to be able to automate the process of downloading the list of PDFs containing information of individual cases from a website provided by the client.
+
+•	Documents being the searchable PDFs it made it easy to use one of the third-party libraries (pdf2text) that converted the PDF into plain text.
+
+•	Used Spacy as the NLP library to extract useful information from plain text. 
+
+•	Spacy’s named entity recognition along with the matcher class was used to extract the judge and refugee name from the text
+
+•	Performed data scraping using bs4 to extract useful data from online
+
+•	Using FAST API as the Python web-framework, REST API was built to feed data to the front-end team 
+
+•	AWS S3 bucket was used to store PDF
+
+•	Used AWS RDS PostgreSQL as the relational database 
+
+•	Docker was used for environment standardization
+
+•	Deployed the containerized application on AWS Elastic Beanstalk 
+
 
 ## About the Non-profit Organization and its Asylum Representation Program
 
