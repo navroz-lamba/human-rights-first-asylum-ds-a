@@ -49,7 +49,7 @@ The process for seeking asylum in the U.S. is complicated and an asylum-seeker i
 
 We worked on designing a web tool backed by data science to aggregate data on asylum cases, allowing users to explore data, make predictions, and visualize how a judge might rule on a specific asylum case considering the elements of that case.
 
-Working on this project was very satisfying as HRF attorneys will be able to use this tool to better prepare for their case which will help significantly increase the percentage of refugees being granted asylum.![image](https://user-images.githubusercontent.com/67918990/110429539-1b28f800-8079-11eb-8d60-c7fdae9d1973.png)
+Working on this project was very satisfying as HRF attorneys will be able to use this tool to better prepare for their case which will help significantly increase the percentage of refugees being granted asylum.
 
 ## My Contributions
 
